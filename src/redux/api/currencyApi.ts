@@ -10,7 +10,14 @@ export const currencyApi = api.injectEndpoints({
       }),
       providesTags: ["CURRENCY"],
     }),
+    getCurrencyByDate: build.query<CurrencyData[], string>({
+      query: (date) => ({
+        url: `arkhiv-kursov-valyut/json/all/${date}/`,
+        method: "GET",
+      }),
+      providesTags: ["CURRENCY"],
+    }),
   }),
 });
 
-export const { useGetCurrencyQuery } = currencyApi;
+export const { useGetCurrencyQuery, useGetCurrencyByDateQuery } = currencyApi;

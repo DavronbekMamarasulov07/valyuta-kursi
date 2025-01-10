@@ -2,6 +2,14 @@ import { FaRegChartBar } from "react-icons/fa";
 import { BiTrendingDown } from "react-icons/bi";
 import { BiTrendingUp } from "react-icons/bi";
 import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -80,6 +88,19 @@ const CurrencyCard = ({ data }: { data: CurrencyData }) => {
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
+                  <Dialog>
+                    <DialogTrigger>Open</DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px] flex justify-center items-center">
+                      <DialogHeader>
+                        <DialogTitle>Are you absolutely sure?</DialogTitle>
+                        <DialogDescription>
+                          This action cannot be undone. This will permanently
+                          delete your account and remove your data from our
+                          servers.
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </div>
             </div>

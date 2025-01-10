@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import CurrencyCard from "./components/card/CurrencyCard";
+// import CurrencyCard from "./components/card/CurrencyCard";
 import Container from "./components/container";
 import Navbar from "./components/navbar";
 import { Card } from "./components/ui/card";
 import { Skeleton } from "./components/ui/skeleton";
 import { useGetCurrencyQuery } from "./redux/api/currencyApi";
+import CurrencyCardInfo from "./components/card/CurrencyCardInfo";
 
 const App = () => {
   const { data: CurrencyDatas, isLoading, isError } = useGetCurrencyQuery();
@@ -16,9 +17,9 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <div className="mt-[140px] mb-[60px]">
+      <div className="mt-[140px] mb-[60px] ">
         <Container>
-          <Card className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-4 p-5 xl:grid-cols-3">
+          <Card className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-4 p-5 xl:grid-cols-3 ">
             {isLoading ? (
               Array.from({ length: 12 }).map((_, index) => (
                 <Skeleton
@@ -30,11 +31,12 @@ const App = () => {
               ))
             ) : CurrencyDatas && CurrencyDatas.length > 0 ? (
               CurrencyDatas.map((item) => (
-                <CurrencyCard data={item} key={item.Ccy} />
+                <CurrencyCardInfo data={item} key={item.Ccy} />
               ))
             ) : (
               <div>No data available</div>
             )}
+            {}
           </Card>
         </Container>
       </div>
